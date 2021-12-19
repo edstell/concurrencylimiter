@@ -1,5 +1,5 @@
 # concurrencylimiter
-A simple package for executing work in concurrently - up to a limit.
+A simple package for executing work concurrently - up to a limit.
 
 The intended usecase looks something like:
 ```
