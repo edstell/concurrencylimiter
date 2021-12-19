@@ -2,15 +2,15 @@ package concurrencylimiter
 
 import "sync"
 
-// A ConcurrencyLimiter executes submitted tasks in parallel until the
-// concurrency limit is reached, after which submission of new tasks blocks
-// until the number 'in-flight' falls below the limit.
+// A ConcurrencyLimiter executes submitted tasks in parallel until the limit is
+// reached, after which submission of new tasks blocks until the number
+// 'in-flight' falls below the limit.
 type ConcurrencyLimiter struct {
 	wg    sync.WaitGroup
 	doers chan func(func())
 }
 
-// New which will allow 'limit' concurrent tasks.
+// New ConcurrencyLimiter allowing 'limit' parallel tasks.
 func New(limit int) *ConcurrencyLimiter {
 	cl := &ConcurrencyLimiter{
 		doers: make(chan func(func()), limit),
