@@ -3,12 +3,12 @@ A simple package for executing work concurrently - up to a limit.
 
 The intended usecase looks something like:
 ```
-func do(tasks []func()) {
-	limiter := concurrencylimiter.NewLimiter(5)
+func concurrentlyDo(tasks []func(), withLimit int) {
+	cl := concurrencylimiter.New(withLimit)
 	for _, task := range tasks {
-		limiter.Submit(task)
+		cl.Do(task)
 	}
-	limiter.Wait()
+	cl.Wait()
 }
 ```
 

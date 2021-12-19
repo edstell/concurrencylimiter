@@ -8,12 +8,12 @@ import (
 
 func TestLimiter(t *testing.T) {
 	count := 0
-	l := NewLimiter(1)
+	cl := New(1)
 	for i := 0; i < 2; i++ {
-		l.Submit(func() {
+		cl.Do(func() {
 			count += 1
 		})
 	}
-	l.Wait()
+	cl.Wait()
 	assert.Equal(t, 2, count)
 }
